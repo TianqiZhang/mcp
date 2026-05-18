@@ -14,19 +14,19 @@ $script:HasErrors = $false
 $repoRoot = Split-Path -Parent $PSScriptRoot
 
 $pluginName = "microsoft-docs"
-$pluginDir = Join-Path $repoRoot "plugins\microsoft-docs"
+$pluginDir = Join-Path (Join-Path $repoRoot "plugins") "microsoft-docs"
 $skillsDir = Join-Path $pluginDir "skills"
 $mcpJson = Join-Path $pluginDir ".mcp.json"
 $codexMcpJson = Join-Path $pluginDir ".codex.mcp.json"
 
-$codexMarketplaceJson = Join-Path $repoRoot ".agents\plugins\marketplace.json"
-$claudeMarketplaceJson = Join-Path $repoRoot ".claude-plugin\marketplace.json"
-$copilotMarketplaceJson = Join-Path $repoRoot ".github\plugin\marketplace.json"
-$copilotShimJson = Join-Path $repoRoot ".github\plugin\plugin.json"
+$codexMarketplaceJson = Join-Path (Join-Path (Join-Path $repoRoot ".agents") "plugins") "marketplace.json"
+$claudeMarketplaceJson = Join-Path (Join-Path $repoRoot ".claude-plugin") "marketplace.json"
+$copilotMarketplaceJson = Join-Path (Join-Path (Join-Path $repoRoot ".github") "plugin") "marketplace.json"
+$copilotShimJson = Join-Path (Join-Path (Join-Path $repoRoot ".github") "plugin") "plugin.json"
 
 $copilotPackageJson = Join-Path $pluginDir "plugin.json"
-$claudePackageJson = Join-Path $pluginDir ".claude-plugin\plugin.json"
-$codexPackageJson = Join-Path $pluginDir ".codex-plugin\plugin.json"
+$claudePackageJson = Join-Path (Join-Path $pluginDir ".claude-plugin") "plugin.json"
+$codexPackageJson = Join-Path (Join-Path $pluginDir ".codex-plugin") "plugin.json"
 
 function Write-ValidationError($message) {
     Write-Host "[ERROR] $message" -ForegroundColor Red
@@ -118,8 +118,8 @@ foreach ($file in $requiredFiles) {
 }
 
 $unexpectedRootPluginFiles = @(
-    @{ Path = Join-Path $repoRoot ".claude-plugin\plugin.json"; Label = ".claude-plugin/plugin.json" },
-    @{ Path = Join-Path $repoRoot ".codex-plugin\plugin.json"; Label = ".codex-plugin/plugin.json" },
+    @{ Path = Join-Path (Join-Path $repoRoot ".claude-plugin") "plugin.json"; Label = ".claude-plugin/plugin.json" },
+    @{ Path = Join-Path (Join-Path $repoRoot ".codex-plugin") "plugin.json"; Label = ".codex-plugin/plugin.json" },
     @{ Path = Join-Path $repoRoot ".mcp.json"; Label = ".mcp.json" },
     @{ Path = Join-Path $repoRoot "skills"; Label = "skills/" }
 )

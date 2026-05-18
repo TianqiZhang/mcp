@@ -138,6 +138,7 @@ If you use Claude Code, add this repository as a marketplace and install the plu
 If you use Codex CLI, add this repository as a marketplace, then install `microsoft-docs` from the Microsoft Docs marketplace in the plugin directory:
 ```
 codex plugin marketplace add microsoftdocs/mcp
+codex plugin install microsoft-docs@microsoft-docs-marketplace
 ```
 
 The plugin package lives under `plugins/microsoft-docs/` so all three coding agents can share the same skills and MCP configuration.
